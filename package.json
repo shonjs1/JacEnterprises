@@ -1,5 +1,19 @@
 {
   "dependencies": {
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "express": "^4.18.2"
+  },
+  "name": "jacenterprises-2",
+  "description": "a team project that creates a product that meets the requirements relayed by Jac Enterprises.",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
