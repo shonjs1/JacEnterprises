@@ -1,34 +1,63 @@
-import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  const [names, setNames] = useState(['Huan', 'Cameron', 'Alicia', 'Jay'])
+  //define variable to init image and description from NASA api.
+  const [nasaData, setNasaData] = useState<{ imageUrl: string | null; description: string | null }>({
+    imageUrl: null, //empty null image
+    description: null, //empty null description
+  });
 
-  function namesAsList() {
-    const allLists = names.map (n => <li key={n}>{n}</li>)
-    return allLists
-  }
+  //Function to fetch random NASA image/description
+  const fetchRandomNasaData = async () => {
+    //try catch to display console error/ error debugging
+    try {
+      const response = await fetch('https://images-api.nasa.gov/search?q=Planet'); // Replace 'Planet' with any desired search term
+      if (!response.ok) {
+        throw new Error('Network response ERROR');
+      }
+      const data = await response.json();
 
-  function handleClick() {
-    fetch('http://localhost:5000/users')
-    .then(res =>  {
-      return res.json()
-    }).then(val => {
-      setNames(val)
-    })
-  }
+      // Extract a random image/description from the NASA API response
+      const items = data.collection.items;
+      if (items.length > 0) {
+        const randomIndex = Math.floor(Math.random() * items.length);
+        const randomImage = items[randomIndex];
+        if (randomImage && randomImage.links && randomImage.links[0] && randomImage.data && randomImage.data[0]) {
+          const imageUrl = randomImage.links[0].href;
+          const description = randomImage.data[0].description;
+          setNasaData({ imageUrl, description });
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching NASA data:', error);
+    }
+  };
 
-  return(
-    <div className="App">
-      <h1>List of names</h1>
-      <ul>
-        {namesAsList()}
-      </ul>
-      <button onClick={handleClick}>Update Names</button>
+  const handleFetchData = () => {
+    // Call fetchRandomNasaData when the user clicks the button
+    fetchRandomNasaData();
+  };
+
+  useEffect(() => {
+    // Fetch a random NASA image and description when the component mounts
+    fetchRandomNasaData();
+  }, []); 
+
+  return (
+    <div>
+      <button onClick={handleFetchData}>Fetch Random NASA Data</button>
+      <div>
+        {nasaData.imageUrl ? (
+          <div>
+            <img src={nasaData.imageUrl} alt="NASA" />
+            <p>{nasaData.description}</p>
+          </div>
+        ) : (
+          <p>No NASA image available</p>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
