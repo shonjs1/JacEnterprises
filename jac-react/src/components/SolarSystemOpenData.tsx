@@ -7,22 +7,18 @@ const SolarSystemOpenData: React.FC = () => {
     fetch("https://api.le-systeme-solaire.net/rest/bodies/")
         .then((response) => response.json())
         .then((data) => {
-        const celestialBodies = data.bodies.filter(
-            (body: any) => body.isPlanet && !body.isDwarfPlanet
-        );
-
         // Generate a random index to select a celestial body
-        const randomIndex = Math.floor(Math.random() * celestialBodies.length);
+        const randomIndex = Math.floor(Math.random() * data.bodies.length);
 
         // Set the selected celestial body
-        setSolarData(celestialBodies[randomIndex]);
+        setSolarData(data.bodies[randomIndex]);
         })
         .catch((error) => {
         console.error("Error fetching data:", error);
         });
 }, []);
 
-    return (
+return (
     <div>
         <h1>Random Celestial Body</h1>
         {solarData && (
