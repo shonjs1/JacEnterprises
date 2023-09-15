@@ -29,6 +29,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #0c3049;
 }
 
 h1 {
@@ -66,4 +67,14 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Added styles */
+
+.custom-cursor-button {
+  cursor: url(./images/astronaut.png), auto;
+}
+
+.homepage {
+  background-image: src="/src/images/background.png";
 }
