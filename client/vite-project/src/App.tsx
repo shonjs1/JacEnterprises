@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from 'react';
 
 function App() {
-  //define variable to init image and description from NASA api.
   const [nasaData, setNasaData] = useState<{ imageUrl: string | null; description: string | null }>({
-    imageUrl: null, //empty null image
-    description: null, //empty null description
+    imageUrl: null,
+    description: null,
   });
 
-  //Function to fetch random NASA image/description
+  const [dictionaryData, setDictionaryData] = useState<{
+    word: string | null;
+    partOfSpeech: string | null;
+    phonetic: string | null;
+    meaning: string | null;
+    example: string | null;
+  }>({
+    word: null,
+    partOfSpeech: null,
+    phonetic: null,
+    meaning: null,
+    example: null,
+  });
+
   const fetchRandomNasaData = async () => {
-    //try catch to display console error/ error debugging
     try {
       const response = await fetch('https://images-api.nasa.gov/search?q=Planet'); // Replace 'Planet' with any desired search term
       if (!response.ok) {
-        throw new Error('Network response ERROR');
+        throw new Error('Network response was not ok');
       }
       const data = await response.json();
 
-      // Extract a random image/description from the NASA API response
+      // Extract a random image and its description from the NASA API response
       const items = data.collection.items;
       if (items.length > 0) {
         const randomIndex = Math.floor(Math.random() * items.length);
@@ -33,15 +44,53 @@ function App() {
     }
   };
 
+  const fetchDictionaryData = async (word: string) => {
+    const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+
+      // Extract and set dictionary data
+      if (data.length > 0) {
+        const dictionaryResult = {
+          word,
+          partOfSpeech: data[0].meanings[0].partOfSpeech || null,
+          phonetic: data[0].phonetic || null,
+          meaning: data[0].meanings[0].definitions[0].definition || null,
+          example: data[0].meanings[0].definitions[0].example || null,
+        };
+        setDictionaryData(dictionaryResult);
+      }
+    } catch (error) {
+      console.error('Error fetching dictionary data:', error);
+      setDictionaryData({
+        word,
+        partOfSpeech: null,
+        phonetic: null,
+        meaning: null,
+        example: null,
+      });
+    }
+  };
+
   const handleFetchData = () => {
     // Call fetchRandomNasaData when the user clicks the button
     fetchRandomNasaData();
   };
 
+  const handleDictionarySearch = () => {
+    const inpWord = document.getElementById("inp-word").value;
+    fetchDictionaryData(inpWord);
+  };
+
   useEffect(() => {
     // Fetch a random NASA image and description when the component mounts
     fetchRandomNasaData();
-  }, []); 
+  }, []); // Empty dependency array means this effect runs only once, on component mount
 
   return (
     <div>
@@ -54,6 +103,26 @@ function App() {
           </div>
         ) : (
           <p>No NASA image available</p>
+        )}
+      </div>
+
+      {/* Dictionary search input */}
+      <input
+        type="text"
+        id="inp-word"
+        placeholder="Enter a word"
+      />
+      <button onClick={handleDictionarySearch}>Search Dictionary</button>
+      <div id="dictionary-result">
+        {/* Dictionary results will be displayed here */}
+        {dictionaryData.word && (
+          <div>
+            <h3>{dictionaryData.word}</h3>
+            <p>{dictionaryData.partOfSpeech}</p>
+            <p>{dictionaryData.phonetic}</p>
+            <p>{dictionaryData.meaning}</p>
+            <p>{dictionaryData.example}</p>
+          </div>
         )}
       </div>
     </div>
