@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import './App.css'; 
+
 
 function App() {
   const [nasaData, setNasaData] = useState<{ imageUrl: string | null; description: string | null }>({
@@ -64,6 +66,15 @@ function App() {
           example: data[0].meanings[0].definitions[0].example || null,
         };
         setDictionaryData(dictionaryResult);
+      } else {
+        // No dictionary data found
+        setDictionaryData({
+          word,
+          partOfSpeech: null,
+          phonetic: null,
+          meaning: 'Please retype the word',
+          example: null,
+        });
       }
     } catch (error) {
       console.error('Error fetching dictionary data:', error);
@@ -71,7 +82,7 @@ function App() {
         word,
         partOfSpeech: null,
         phonetic: null,
-        meaning: null,
+        meaning: 'Please retype the word',
         example: null,
       });
     }
