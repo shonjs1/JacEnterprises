@@ -129,6 +129,15 @@ img.bg {
   color: #063675;
 }
 
+/* Style the contact page */
+.font-small {
+  font-size: 1.2rem;
+}
+
+.font-big {
+  font-size: 1.5rem;
+}
+
 /* Style the dictionary section */
 #dictionary-result {
   margin-top: 20px;
