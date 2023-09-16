@@ -12,15 +12,25 @@ const ContactPage = () => {
                     </div>
 
                     <form>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputEmail1" className="form-label font-style font-big">Send Us a Message</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email <name@example.com>" />
-                            <div id="emailHelp" className="form-text font-style font-small">Our Address: 2645 N High Street Columbus, OH 43202 <br/>
-                            Our Phone Number: (1) 844 932 2626</div>
+
+                    <div className="row justify-content-md-center">
+                        <div className="col-md-auto">
+                            <div className="mb-3">
+                                <label htmlFor="exampleInputEmail1" className="form-label font-style font-big">Send Us a Message</label>
+                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email <name@example.com>" />
+                                <div id="emailHelp" className="form-text font-style font-small">Our Address: 2645 N High Street Columbus, OH 43202 <br/>
+                                Our Phone Number: (1) 844 932 2626</div>
+                            </div>
                         </div>
-                        <div className="mb-3">
-                        <label htmlFor="exampleFormControlTextarea1" className="form-label font-style font-big">Say Hi Here !</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows={4}></textarea>
+                    </div>
+                    
+                    <div className="row justify-content-md-center">
+                        <div className="col-lg-auto">
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlTextarea1" className="form-label font-style font-big">Say Hi Here !</label>
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows={4}></textarea>
+                            </div>
+                        </div>
                     </div>
                         <div className="mb-3 form-check">
                             <input type="checkbox" className="form-check-input" id="exampleCheck1" />
