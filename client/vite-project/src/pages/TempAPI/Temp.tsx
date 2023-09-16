@@ -188,7 +188,7 @@ const handleDictionarySearch = async () => {
       <div id="dictionary-result">
         {dictionaryData.word && (
           <div>
-            <h3>{dictionaryData.wjjord}</h3>
+            <h3>{dictionaryData.word}</h3>
             <p>{dictionaryData.partOfSpeech}</p>
             <p>{dictionaryData.phonetic}</p>
             <p>{dictionaryData.meaning}</p>
