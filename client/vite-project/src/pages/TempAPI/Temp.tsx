@@ -165,52 +165,73 @@ const isValidWord = (word) => {
   };
 
   return (
-    <div>
+  <div> 
+    <img className="bg" src="/src/images/background.png" />
 
-      <button className="fetch-button" onClick={handleFetchData}>
-        Click Here For New Planet Facts
-      </button>
-      <div>
+    <div className="container-fluid text-center">
+
+      <div className="row justify-content-md-center">
+        <div className="col-md-auto">
+          <button className="fetch-button" onClick={handleFetchData}>
+            Click Here For New Planet Facts
+          </button>
+        </div>
+      </div>
+
+      <div className="row justify-content-md-center">
         {nasaData.imageUrl ? (
-          <div>
+          <div className="col-md">
             <img
               src={nasaData.imageUrl}
               alt="NASA"
               width="500"
               height="300"
             />
-            <p className="description">{nasaData.description}</p>
+            <div className="col-md col-border">
+              <p className="font-style font-small">{nasaData.description}</p>
+            </div>
+            
           </div>
         ) : (
           <p>No NASA image available</p>
         )}
       </div>
 
-      <input type="text" id="inp-word" placeholder="Enter a word" />
-      <button onClick={handleDictionarySearch}>Search Dictionary</button>
-      <div id="dictionary-result">
-        {dictionaryData.word && (
-          <div>
-            <h3>{dictionaryData.word}</h3>
-            <p>{dictionaryData.partOfSpeech}</p>
-            <p>{dictionaryData.phonetic}</p>
-            <p>{dictionaryData.meaning}</p>
-            <p>{dictionaryData.example}</p>
-          </div>
-        )}
+      <div className="row justify-content-md-center">
+        <div className="col-md-auto">
+          <input type="text" id="inp-word" placeholder="Enter a word" />
+          <button onClick={handleDictionarySearch}>Search Dictionary</button>
+        </div>
       </div>
 
-      <div id="searched-words">
-        <h3>Searched Words</h3>
-        <ul>
-          {searchedWords.map((word, index) => (
-            <li key={index}>
-              {index + 1}. {word}
-            </li>
-          ))}
-        </ul>
+      <div className="row justify-content-md-center" id="dictionary-result">
+        <div className="col-sm-8 col-border">
+          {dictionaryData.word && (
+            <div className="font-style font-big">
+              <h3>{dictionaryData.word}</h3>
+              <p>{dictionaryData.partOfSpeech}</p>
+              <p>{dictionaryData.phonetic}</p>
+              <p>{dictionaryData.meaning}</p>
+              <p>{dictionaryData.example}</p>
+            </div>
+          )}
+        </div>
+
+        <div className="col-sm-4 col-border">
+            <h3 className="font-style font-big">Searched Words</h3>
+            <ul className="font-style font-small">
+              {searchedWords.map((word, index) => (
+                <li key={index}>
+                  {index + 1}. {word}
+                </li>
+              ))}
+            </ul>
+        </div>
+
       </div>
+
     </div>
+  </div>
   );
 }
 

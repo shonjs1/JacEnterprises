@@ -8,9 +8,10 @@ const PageSwitch = () => {
     return (
     <Routes>
         <Route path="/" element={<HomePage/>} />
+        <Route path="/temp" element={<TempPage/>} />
         <Route path="/about-us" element={<AboutUsPage/>} />
         <Route path="/contact" element={<ContactPage/>} />
-        <Route path="/temp" element={<TempPage/>} />
+        
     </Routes>
     );
 };
