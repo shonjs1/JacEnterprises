@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
-
+import axios from 'axios';
+import './TempPage.css';
 
 function TempPage() {
   const [nasaData, setNasaData] = useState<{ imageUrl: string | null; description: string | null }>({
@@ -22,15 +22,16 @@ function TempPage() {
     example: null,
   });
 
+  const [searchedWords, setSearchedWords] = useState<string[]>([]);
+
   const fetchRandomNasaData = async () => {
     try {
-      const response = await fetch('https://images-api.nasa.gov/search?q=Planet'); // Replace 'Planet' with any desired search term
+      const response = await fetch('https://images-api.nasa.gov/search?q=Planet');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
 
-      // Extract a random image and its description from the NASA API response
       const items = data.collection.items;
       if (items.length > 0) {
         const randomIndex = Math.floor(Math.random() * items.length);
@@ -56,7 +57,6 @@ function TempPage() {
       }
       const data = await response.json();
 
-      // Extract and set dictionary data
       if (data.length > 0) {
         const dictionaryResult = {
           word,
@@ -67,7 +67,6 @@ function TempPage() {
         };
         setDictionaryData(dictionaryResult);
       } else {
-        // No dictionary data found
         setDictionaryData({
           word,
           partOfSpeech: null,
@@ -89,35 +88,38 @@ function TempPage() {
   };
 
   const handleFetchData = () => {
-    // Call fetchRandomNasaData when the user clicks the button
     fetchRandomNasaData();
   };
 
-  const handleDictionarySearch = () => {
+  const handleDictionarySearch = async () => {
     const inpWord = document.getElementById("inp-word").value;
     fetchDictionaryData(inpWord);
+
+    if (inpWord.trim() !== '') {
+      setSearchedWords([...searchedWords, inpWord]);
+    }
   };
 
   useEffect(() => {
-    // Fetch a random NASA image and description when the component mounts
     fetchRandomNasaData();
-  }, []); // Empty dependency array means this effect runs only once, on component mount
+  }, []);
 
   return (
     <div>
-      <button onClick={handleFetchData}>Fetch Random NASA Data</button>
+    
+
+      <button className="fetch-button" onClick={handleFetchData}>Click Here For New Planet Facts</button>
       <div>
         {nasaData.imageUrl ? (
           <div>
-            <img src={nasaData.imageUrl} alt="NASA" />
-            <p>{nasaData.description}</p>
+            <img src={nasaData.imageUrl} alt="NASA" width="500" height="300" />
+            <p className="description">{nasaData.description}</p>
           </div>
         ) : (
           <p>No NASA image available</p>
         )}
       </div>
 
-      {/* Dictionary search input */}
       <input
         type="text"
         id="inp-word"
@@ -125,7 +127,6 @@ function TempPage() {
       />
       <button onClick={handleDictionarySearch}>Search Dictionary</button>
       <div id="dictionary-result">
-        {/* Dictionary results will be displayed here */}
         {dictionaryData.word && (
           <div>
             <h3>{dictionaryData.word}</h3>
@@ -135,6 +136,15 @@ function TempPage() {
             <p>{dictionaryData.example}</p>
           </div>
         )}
+      </div>
+
+      <div id="searched-words">
+        <h3 id="">Searched Words</h3>
+        <ul>
+          {searchedWords.map((word, index) => (
+            <li key={index}>{word}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Navbar = () => {
         <NavLink to='/contact' className="nav-link">CONTACT</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to='/temp' className="nav-link">NASA Page</NavLink>
+        <NavLink to='/temp' className="nav-link">Mystery Educator</NavLink>
       </li>
     </ul>
   );
