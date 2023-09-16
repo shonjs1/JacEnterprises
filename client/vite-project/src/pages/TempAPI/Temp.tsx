@@ -155,7 +155,6 @@ function TempPage() {
         </div>
       </div>
 
-
       <div className="row justify-content-md-center">
         {nasaData.imageUrl ? (
           <div className="col-md">
@@ -181,7 +180,6 @@ function TempPage() {
           <button onClick={handleDictionarySearch}>Search Dictionary</button>
         </div>
       </div>
-
 
       <div className="row justify-content-md-center" id="dictionary-result">
         <div className="col-sm-8 col-border">
