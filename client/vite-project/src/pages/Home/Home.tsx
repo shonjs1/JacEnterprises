@@ -3,7 +3,7 @@ const HomePage = () => {
     return (
         <div className='homepage'>
             <img className="bg" src="/src/images/background.png" />
-            <div className="container-lg text-center">
+            <div className="container-fluid text-center">
                 <div className="row justify-content-md-center">
                     <div className="col-md-auto">
                         <h1>Mystery Educator</h1>

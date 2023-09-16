@@ -31,6 +31,9 @@
   }
 }
 
+.nav {
+  position: relative;
+}
 
 .nav-link {
   color: #b6d5f4;
@@ -70,6 +73,14 @@ img.bg {
   background-color: #11a3d8;
 }
 
+.container-fluid {
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 1em 1em;
+  font-family: inherit;
+  background-color: #11a3d8;
+}
+
 .col-border {
   border-radius: 8px;
   border: 1px solid #ffffff;
@@ -81,7 +92,6 @@ img.bg {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 400;
 }
-
 
 /* Style the dictionary section */
 #dictionary-result {

@@ -9,9 +9,8 @@ import { BrowserRouter } from 'react-router-dom';
 function App() {
   return (
     <div>
-      
       <BrowserRouter>
-        <Navbar />
+        <div><Navbar /></div>        
           <div>
             <PageSwitch />
           </div>

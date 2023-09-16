@@ -72,7 +72,7 @@ button:focus-visible {
 /* Added styles */
 
 .custom-cursor-button {
-  cursor: url(./images/astronaut.png), auto;
+  cursor: url(./images/astronaut.png) 16 16, auto;
 }
 
 .homepage {
