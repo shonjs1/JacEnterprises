@@ -25,7 +25,7 @@ const HomePage = () => {
                 </div>
                 <div className="row">
                     <div className="col-6 col-border"><h3>DESCRIPTION</h3></div>
-                    <div className="col-6 col-border"><h3>FACT</h3></div>
+                    <div className="col-6 col-border"><h3>DICTIONARY</h3></div>
                 </div>
             </div>
         </div>

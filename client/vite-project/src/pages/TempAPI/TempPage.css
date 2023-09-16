@@ -1,0 +1,68 @@
+/* TempPage.css */
+
+.temp-page {
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .fetch-button {
+    background-color: white;
+    color: gray;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+  }
+  .description {
+    margin-top: 20px;
+    color: red; /* Change the color to your preferred color */
+    border: 1px solid green; /* Add a border around the description */
+    padding: 10px; /* Add some padding to the description */
+  }
+
+  .nasa-image {
+    max-width: 500px;
+    height: auto;
+    margin: 20px 0;
+    display: block;
+    border: 1px solid white;
+  }
+  
+  .dictionary-input {
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .search-button {
+    background-color: #1f622f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .dictionary-result {
+    margin-top: 20px;
+  }
+
+  #searched-words li {
+    color: green;
+  }
+
+  #searched-words h3 {
+    color: green;
+  }
+
+  #searched-words ul {
+    list-style-type: none; /* Remove the default numbering */
+    padding: 0; /* Remove padding to bring the number closer to the word */
+  }
+
+  #searched-words {
+    border: 1px solid #ccc; /* Add a border around the "Searched Words" section */
+    padding: 10px; /* Add padding to create some space between the border and content */
+  }
