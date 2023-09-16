@@ -77,7 +77,7 @@ const AboutUsPage = () => {
                         <h4 className="margin-top-1 font-style">Huan Le</h4>
                     </div>
                     <div className="col-sm-8 col-border ">
-                        <h5 className="margin-top-2 font-style">Aspiring Software Developer</h5>
+                        <h5 className="margin-top-2 font-style">Passionate Latecomer to Programming</h5>
                         <p className="aboutus-p">
                         Greetings! I'm Huan, a passionate learner who went on board on a astonishing programming journey later in life.
                         While some may find age as a hindrance, I believe it has only fueled my determination to master the art of programming and embrace the world of technology.
