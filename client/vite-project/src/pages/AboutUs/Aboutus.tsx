@@ -19,7 +19,7 @@ const AboutUsPage = () => {
                         <h4 className="margin-top-1 font-style">Alicia Tejada</h4>
                     </div>
                     <div className="col-sm-8 col-border ">
-                        <h5 className="margin-top-2 font-style">An Mom Artist</h5>
+                        <h5 className="margin-top-2 font-style">An Artist Mom who exploring the world of coding</h5>
                         <p className="aboutus-p">
                         I'm Alicia Tejada, an artist and mother. My passion for painting, especially portraits, has been a colorful journey of self-expression. I also create vibrant textile art. Inspired by my children, I explore new techniques and push creative boundaries. Explore my artwork here and let's connect for endless inspiration.
                         </p>
@@ -37,7 +37,7 @@ const AboutUsPage = () => {
                         <h4 className="margin-top-1 font-style">Ji Hyuk Shon</h4>
                     </div>
                     <div className="col-sm-8 col-border ">
-                        <h5 className="margin-top-2 font-style">Aspiring Software Developer</h5>
+                        <h5 className="margin-top-2 font-style">Innovative Full Stack Engineer Seeking Purposeful Team</h5>
                         <p className="aboutus-p">
                         Hello, I'm Ji Hyuk Shon.
 
