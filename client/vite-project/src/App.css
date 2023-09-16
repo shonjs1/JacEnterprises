@@ -1,4 +1,8 @@
-/* Add this CSS to your stylesheets or style tag in your component */
+.animated-astronaut{
+  position: relative;
+  z-index: 999;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -127,6 +131,15 @@ img.bg {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 500;
   color: #063675;
+}
+
+/* Style the contact page */
+.font-small {
+  font-size: 1.2rem;
+}
+
+.font-big {
+  font-size: 1.5rem;
 }
 
 /* Style the dictionary section */
