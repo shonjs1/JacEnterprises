@@ -1,4 +1,8 @@
-/* Add this CSS to your stylesheets or style tag in your component */
+.animated-astronaut{
+  position: relative;
+  z-index: 999;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
