@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Saturn Rings</title>
+</head>
+<body>
+    <header>
+        <h1 class="logo">Click For Rings!!</h1>
+        <nav class="nav-bar">
+            <a class="home" class="active" >Home</a>
+            <div class="dropdown">
+                <button class="dropbutton" onclick="myFunction()">Inspiration <i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">Cookie Cutter</a>
+                    <a href="https://orteil.dashnet.org/cookieclicker/">Try Cookie Cutter</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="About" class="tabcontent">
+            <h3>Saturn Rings</h3>
+            <p>It's time to add rings to Saturn!</p>
+        </div>
+    </header>
+
+    <div class="total-container">
+        <div class="column">
+            <h2>Rings Added:</h2>
+        <p><span id="Rings">0</span></p>
+        </div>
+        <div class="column">
+            <h2>Auto Clickers Purchased:</h2>
+            <p><span id="clicker">0</span></p></div>
+            <button onclick="buyClicker()"> Buy Auto Clicker <span id="clickerCost">100</span></button>
+        </div>
+    </div>
+    
+    <div><button id="reset" onclick="reset()">Reset</button></div>
+    
+    <img src="./vecteezy_watercolor-planets-space_19765687_373.png" id= "saturn" height="400px" width="400px" onclick="addToRings(1)">
+    <script src="app.js"></script>
+</body>
+
+<footer>&copy; 2023 Alicia Tejada</footer>
+</html>
