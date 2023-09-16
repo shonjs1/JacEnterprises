@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'; // Import axios to make HTTP requests
 import './TempPage.css';
 
 function TempPage() {
-  const [nasaData, setNasaData] = useState<{ imageUrl: string | null; description: string | null }>({
+  const [nasaData, setNasaData] = useState<{
+    imageUrl: string | null;
+    description: string | null;
+  }>({
     imageUrl: null,
     description: null,
   });
@@ -92,7 +95,7 @@ function TempPage() {
   };
 
   const handleDictionarySearch = async () => {
-    const inpWord = document.getElementById("inp-word").value;
+    const inpWord = document.getElementById('inp-word').value;
     fetchDictionaryData(inpWord);
 
     if (inpWord.trim() !== '') {
@@ -104,15 +107,55 @@ function TempPage() {
     fetchRandomNasaData();
   }, []);
 
+  // Function to save the searched word to the backend
+  const saveSearchedWord = async (word: string) => {
+    try {
+      // Make a POST request to save the word
+      const response = await axios.post('/api/saveWord', { word });
+
+      if (response.status === 200) {
+        console.log('Word saved successfully');
+      }
+    } catch (error) {
+      console.error('Error saving word:', error);
+    }
+  };
+
+  useEffect(() => {
+    // After the component mounts, fetch the list of searched words from the backend
+    fetchSearchedWords();
+  }, []);
+
+  // Function to fetch the list of searched words from the backend
+  const fetchSearchedWords = async () => {
+    try {
+      // Make a GET request to retrieve searched words
+      const response = await axios.get('/api/getSearchedWords');
+
+      if (response.status === 200) {
+        // Set the retrieved words to the state
+        setSearchedWords(response.data);
+      }
+    } catch (error) {
+      console.error('Error fetching searched words:', error);
+    }
+  };
+
   return (
     <div>
-    
 
-      <button className="fetch-button" onClick={handleFetchData}>Click Here For New Planet Facts</button>
+      <button className="fetch-button" onClick={handleFetchData}>
+        Click Here For New Planet Facts
+      </button>
       <div>
         {nasaData.imageUrl ? (
           <div>
-            <img src={nasaData.imageUrl} alt="NASA" width="500" height="300" />
+            <img
+              src={nasaData.imageUrl}
+              alt="NASA"
+              width="500"
+              height="300"
+            />
             <p className="description">{nasaData.description}</p>
           </div>
         ) : (
@@ -120,11 +163,7 @@ function TempPage() {
         )}
       </div>
 
-      <input
-        type="text"
-        id="inp-word"
-        placeholder="Enter a word"
-      />
+      <input type="text" id="inp-word" placeholder="Enter a word" />
       <button onClick={handleDictionarySearch}>Search Dictionary</button>
       <div id="dictionary-result">
         {dictionaryData.word && (
@@ -139,10 +178,12 @@ function TempPage() {
       </div>
 
       <div id="searched-words">
-        <h3 id="">Searched Words</h3>
+        <h3>Searched Words</h3>
         <ul>
           {searchedWords.map((word, index) => (
-            <li key={index}>{word}</li>
+            <li key={index}>
+              {index + 1}. {word}
+            </li>
           ))}
         </ul>
       </div>
