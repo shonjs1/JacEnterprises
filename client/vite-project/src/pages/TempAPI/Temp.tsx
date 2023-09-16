@@ -39,13 +39,14 @@ function TempPage() {
       const data = await response.json();
 
       const items = data.collection.items;
-      if (items.length > 0) {
-        const randomIndex = Math.floor(Math.random() * items.length);
-        const randomImage = items[randomIndex];
-        if (randomImage && randomImage.links && randomImage.links[0] && randomImage.data && randomImage.data[0]) {
+
+      if (items.length > 0) { //checks that there are items in the array. 
+        const randomIndex = Math.floor(Math.random() * items.length); //generates a random index within the range of the length of the array.
+        const randomImage = items[randomIndex]; //takes the random image from the array that was generated.
+        if (randomImage && randomImage.links && randomImage.links[0] && randomImage.data && randomImage.data[0]) { //makes sure that the image has an image and description.
           const imageUrl = randomImage.links[0].href;
           const description = randomImage.data[0].description;
-          setNasaData({ imageUrl, description });
+          setNasaData({ imageUrl, description }); // states the final state with the extracted details.
         }
       }
     } catch (error) {
@@ -109,21 +110,17 @@ const isValidWord = (word) => {
 };
 
 //function to handle dictionary search
-  const handleDictionarySearch = async () => {
-    const inpWord = document.getElementById('inp-word').value;
-    fetchDictionaryData(inpWord);
-    //code so words that are incorrect is not saved under Searched Words
-    if (isValidWord(inpWord)){
-      fetchDictionaryData(inpWord);
-      if (inpWord.trim() !== '') {
-        setSearchedWords([...searchedWords, inpWord]);
-        saveSearchedWord(inpWord);
+const handleDictionarySearch = async () => {
+  const inpWord = document.getElementById('inp-word').value;
+  if (isValidWord(inpWord)) {
+    fetchDictionaryData(inpWord); // Corrected variable name from impWord to inpWord
+    if (inpWord.trim() !== '') {
+      setSearchedWords([...searchedWords, inpWord]);
+      saveSearchedWord(inpWord);
     }
-    
   } else {
     alert('Please enter a valid word.');
   }
-
 };
 
   useEffect(() => {
@@ -133,7 +130,7 @@ const isValidWord = (word) => {
   // Function to save the searched word to the backend
   const saveSearchedWord = async (word: string) => {
     try {
-      // a POST request to save the word
+      // Make a POST request to save the word
       const response = await axios.post('/api/saveWord', { word });
 
       if (response.status === 200) {
@@ -191,7 +188,7 @@ const isValidWord = (word) => {
       <div id="dictionary-result">
         {dictionaryData.word && (
           <div>
-            <h3>{dictionaryData.word}</h3>
+            <h3>{dictionaryData.wjjord}</h3>
             <p>{dictionaryData.partOfSpeech}</p>
             <p>{dictionaryData.phonetic}</p>
             <p>{dictionaryData.meaning}</p>
