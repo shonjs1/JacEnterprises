@@ -3,6 +3,7 @@ import axios from 'axios'; // Import axios to make HTTP requests
 import './TempPage.css';
 
 function TempPage() {
+  // State for the data of NASA API (We want to extract image and description)
   const [nasaData, setNasaData] = useState<{
     imageUrl: string | null;
     description: string | null;
@@ -11,6 +12,7 @@ function TempPage() {
     description: null,
   });
 
+  //State for dictionary API https://dictionaryapi.dev/
   const [dictionaryData, setDictionaryData] = useState<{
     word: string | null;
     partOfSpeech: string | null;
@@ -24,9 +26,10 @@ function TempPage() {
     meaning: null,
     example: null,
   });
-
+  // State for Searched Words connecting to Dictionary API
   const [searchedWords, setSearchedWords] = useState<string[]>([]);
 
+  //Fetching NASA API
   const fetchRandomNasaData = async () => {
     try {
       const response = await fetch('https://images-api.nasa.gov/search?q=Planet');
@@ -50,6 +53,7 @@ function TempPage() {
     }
   };
 
+  //Fetching Dictionary API
   const fetchDictionaryData = async (word: string) => {
     const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
 
@@ -89,19 +93,38 @@ function TempPage() {
       });
     }
   };
-
+  //Function to handle NASA when button is clicked. Generates random image/description
   const handleFetchData = () => {
     fetchRandomNasaData();
   };
 
+// Function to check if a word is valid
+const isValidWord = (word) => {
+  
+  const minWordLength = 1; // Minimum length required
+
+  const trimmedWord = word.trim().toLowerCase(); //Capitalization is irrevelant
+
+  return /^[a-z]+$/.test(trimmedWord) && trimmedWord.length >= minWordLength; //only alphabetic allowed
+};
+
+//function to handle dictionary search
   const handleDictionarySearch = async () => {
     const inpWord = document.getElementById('inp-word').value;
     fetchDictionaryData(inpWord);
-
-    if (inpWord.trim() !== '') {
-      setSearchedWords([...searchedWords, inpWord]);
+    //code so words that are incorrect is not saved under Searched Words
+    if (isValidWord(inpWord)){
+      fetchDictionaryData(inpWord);
+      if (inpWord.trim() !== '') {
+        setSearchedWords([...searchedWords, inpWord]);
+        saveSearchedWord(inpWord);
     }
-  };
+    
+  } else {
+    alert('Please enter a valid word.');
+  }
+
+};
 
   useEffect(() => {
     fetchRandomNasaData();
@@ -110,7 +133,7 @@ function TempPage() {
   // Function to save the searched word to the backend
   const saveSearchedWord = async (word: string) => {
     try {
-      // Make a POST request to save the word
+      // a POST request to save the word
       const response = await axios.post('/api/saveWord', { word });
 
       if (response.status === 200) {
