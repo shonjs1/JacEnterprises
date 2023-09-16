@@ -15,13 +15,28 @@ const AboutUsPage = () => {
                 <div className="row">
                     <div className="col-sm-4 col-border">
                         
-                        <img className="profilepic" src="/" alt="AliMar" width="40%" />
+                        <img className="profilepic" src="/src/images/Alicia pic.png" alt="AliMar" width="60%" />
                         <h4>Alicia Tejada</h4>
                     </div>
                     <div className="col-sm-8 col-border">
                         <h5>An Mom Artist</h5>
                         <p>
                         I'm Alicia Tejada, an artist and mother. My passion for painting, especially portraits, has been a colorful journey of self-expression. I also create vibrant textile art. Inspired by my children, I explore new techniques and push creative boundaries. Explore my artwork here and let's connect for endless inspiration.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm-4 col-border">
+                        <img className="profilepic" src="https://ca.slack-edge.com/T14LST83D-U056ZDN68F9-7997599e3a9a-512" alt="Ji" width="60%" />
+                        <h4>Ji Hyuk Shon</h4>
+                    </div>
+                    <div className="col-sm-8 col-border">
+                        <h5>Aspiring Software Developer</h5>
+                        <p>
+                        Hello, I'm Ji Hyuk Shon.
+
+                        I am a full stack software engineer and I want to be apart of a team that delivers top results, has a strong sense of purpose, and a desire to create value for our customers through innovation.
                         </p>
                     </div>
                 </div>
@@ -35,10 +50,22 @@ const AboutUsPage = () => {
                         <h5>Aspiring Software Developer</h5>
                         <p>
                             I am a aspiring Software Developer, who has taken his first step forward, by enrolling in the We Can Code It IT bootcamp, As well as participating in the Amazon Technical Academy Java training program.
-
                             I enjoy all things tech, because it's one of the few things left in the world, where not only the possibilities, but the learning potential is infinite.
-
                             A dream is to one day have the opportunity to push something to it's limits to see what humanity is capable of in the realm of technology.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-sm-4 col-border">
+                        <img className="profilepic" src="https://huanle25.github.io/assets/images/profile%20pic.jpg" alt="D'Camron" width="60%" />
+                        <h4>Huan Le</h4>
+                    </div>
+                    <div className="col-sm-8 col-border">
+                        <h5>Aspiring Software Developer</h5>
+                        <p>
+                        Greetings! I'm Huan, a passionate learner who went on board on a astonishing programming journey later in life.
+                        While some may find age as a hindrance, I believe it has only fueled my determination to master the art of programming and embrace the world of technology.
                         </p>
                     </div>
                 </div>
